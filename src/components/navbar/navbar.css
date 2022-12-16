@@ -9,7 +9,22 @@
     padding: 0px 40px;
     align-items: center;
 }
+.navbar_logo_container{
+display: flex;
+justify-content: center;
+color: white;
+text-align: center;
+}
+
 .navbar_logo{
+    width: 40px;
+    height: 40px;
+    color: white;
+    padding: 0;
+    cursor: pointer;
+    margin: 0 8px;
+}
+.navbar_logo_accnt,.navbar_logo_user{
     width: 40px;
     height: 40px;
     color: white;
@@ -20,4 +35,9 @@
 .brand_logo{
     width: 140px;
     cursor: pointer;
+}
+@media only screen and (max-width: 720px) {
+    .navbar_logo_accnt,.navbar_logo_user{
+       display: none;
+    }  
 }
