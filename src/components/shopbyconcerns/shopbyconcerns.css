@@ -1,0 +1,22 @@
+.shop_concern_parent{
+    padding: 20px 0px 32px 0px;
+    justify-content: center;
+}
+.shop_concern_frst_box, .shop_concern_second_box{
+   padding: 15px; 
+}
+
+.shop_concern_heading{
+    font-size: 36px;
+    line-height: 36px;
+    color: #222;
+    font-family: 'Gilroy-Bold';
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.shop_concern_frst_box span{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}

@@ -1,0 +1,22 @@
+{
+    "Values":[
+    {
+    "id":"001",
+    "name":"Tranparency",
+    "src":"images/transparencyicon-1646306332004.svg",
+    "value":"No hidden ingredients, no opacity. Full disclosure of ingredients used & their concentration"
+    },
+    {
+        "id":"002",
+        "name":"Efficacy",
+        "src":"images/efficacyicon2-1646306653612.svg",
+        "value":"Each product is launched on back of proven science only"
+    }, 
+    {
+      "id":"002",
+      "name":"Affordable",
+      "src":"images/transparencyicon-1646306332004.svg",
+      "value":"Skincare, accessible to all"
+    }
+]
+}

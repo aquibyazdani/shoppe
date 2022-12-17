@@ -1,6 +1,18 @@
-.homepage_container{
+.homepage_main_div{
+    overflow-x: hidden;
+}
+.homepage_container_first{
     margin-top: 96px;
+    padding-bottom: 50px;
     font-family: "Montserrat";
+}
+.homepage_container_values{
+    padding: 5px 0px 85px 0px;
+}
+.homepage_container_review{
+    padding: 75px 0px;
+    background-color: #eeeeee;
+
 }
 .hp_li1{
     font-weight: 700;
@@ -27,5 +39,41 @@
     padding-bottom: 20px;
     list-style: none;
     line-height: 24px;
+    color: #222222;
+}
+.hp_first_ul{
+    padding:30px 16px ;
+}
+@media only screen and (max-width: 767px) {
+    .hp_first_ul{
+    text-align: center;
+    padding:50px 36px ;
+    }
+}
+.our_values_header{
+    padding: 15px;
+}
+.our_values_header p{
+    font-size: 36px;
+    font-style: normal;
+    line-height: 36px;
+    font-weight: 700;
+}
+.review_card_hp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+}
+.review_card_hp p{
+    font-size: 15px;
+    font-weight: 400;
+}
+.review_card_hp b{
+    font-size: 18px;
+    font-weight: 700;
     color: #222222;
 }

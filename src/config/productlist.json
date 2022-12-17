@@ -7,8 +7,8 @@
             "mrp":"₹ 539",
             "offerPrice":"₹ 499",
             "images":[
-                "/alpha-arbutin-2-1200--1min-1646543861869.webp",
-                "/alpha-arbutin-2-1200--1min-1646543861869.webp"
+                "products/images/alpha-arbutin-2-1200--1min-1646543861869.webp",
+                "products/images/alpha-arbutin-2-1200--1min-1646543861869.webp"
             ],
             "reviewers":[
                 {
@@ -31,8 +31,8 @@
             "mrp":"₹ 699",
             "offerPrice":"₹ 699",
             "images":[
-                "/vitamin-c-10-1200--1min-1646543861885.webp",
-                "/vitamin-c-10-1200--1min-1646543861885.webp"
+                "products/images/vitamin-c-10-1200--1min-1646543861885.webp",
+                "products/images/vitamin-c-10-1200--1min-1646543861885.webp"
             ],
             "reviewers":[
                 {
@@ -55,8 +55,8 @@
                 "mrp":"₹ 549",
                 "offerPrice":"₹ 545",
                 "images":[
-                    "/SalicylicAcid2_1200-1-min_2048x.webp",
-                    "/salicylic-acid-2-serum-1200--2min-1645863954004_2048x.webp"
+                    "products/images/SalicylicAcid2_1200-1-min_2048x.webp",
+                    "products/images/salicylic-acid-2-serum-1200--2min-1645863954004_2048x.webp"
                 ],
                 "reviewers":[
                     {
@@ -75,12 +75,12 @@
         {
             "id": "04",
             "category": "skin",
-            "name":"Salicylic + LHA 02% Face Cleanser",
+            "name":"Salicylic Face Cleanser",
             "mrp":"₹ 299",
             "offerPrice":"₹ 295",
             "images":[
-                "/SalicylicLHACleanser-min_400x400.webp",
-                "/SalicylicLHACleanser-min_400x400.webp"
+                "products/images/SalicylicLHACleanser-min_400x400.webp",
+                "products/images/SalicylicLHACleanser-min_400x400.webp"
             ],
             "reviewers":[
                 {
@@ -103,8 +103,8 @@
         "mrp":"₹ 349",
         "offerPrice":"₹ 345",
         "images":[
-            "/SSepicalmMoisturizer1200-2_2048x.webp",
-            "/sepicalm-moisturizer-1200--1min-1646470116846_2048x.webp"
+            "products/images/sepicalm-moisturizer-1200--1min-1646470116846_2048x.webp",
+            "products/images/sepicalm-moisturizer-1200--1min-1646470116846_2048x.webp"
         ],
         "reviewers":[
             {
@@ -127,8 +127,8 @@
         "mrp":"₹ 389",
         "offerPrice":"₹ 399",
         "images":[
-            "/SPF501200-2-min_400x400.webp",
-            "/SPF501200-2-min_400x400.webp"
+            "products/images/SPF501200-2-min_400x400.webp",
+            "products/images/SPF501200-2-min_400x400.webp"
         ],
         "reviewers":[
             {
@@ -151,8 +151,8 @@
         "mrp":"₹ 799",
         "offerPrice":"₹ 795",
         "images":[
-            "/Hairgrowthserum1200-2-min_1296x.webp",
-            "/hair-growth-serum-1200--1min-1646492133715_2048x.webp"
+            "products/images/Hairgrowthserum1200-2-min_1296x.webp",
+            "products/images/hair-growth-serum-1200--1min-1646492133715_2048x.webp"
         ],
         "reviewers":[
             {
@@ -171,12 +171,12 @@
     {
         "id": "08",
         "category": "bath and body",
-        "name":"Glycolic + Tranexamic 11% Body Exfoliator",
+        "name":"Glycolic 11% Body Exfoliator",
         "mrp":"₹ 699",
         "offerPrice":"₹ 689",
         "images":[
-            "/GlycolicTranexamic1200-1-min_2048x.webp",
-            "/GlycolicTranexamic1200-2-min_2048x.webp"
+            "products/images/GlycolicTranexamic1200-1-min_2048x.webp",
+            "products/images/GlycolicTranexamic1200-2-min_2048x.webp"
         ],
         "reviewers":[
             {
@@ -199,8 +199,8 @@
         "mrp":"₹ 299",
         "offerPrice":"₹ 289",
         "images":[
-            "/Nia5BodyLotion1100-1-min_2048x.webp",
-            "/Nia5BodyLotion1100-2-min_2048x.webp"
+            "products/images/Nia5BodyLotion1100-1-min_2048x.webp",
+            "products/images/Nia5BodyLotion1100-2-min_2048x.webp"
         ],
         "reviewers":[
             {
@@ -223,8 +223,8 @@
         "mrp":"₹ 489",
         "offerPrice":"₹ 499",
         "images":[
-            "/SPF30BodyLotion1100-1_1296x.webp",
-            "/SPF30BodyLotion1100-3_2048x.webp"
+            "products/images/SPF30BodyLotion1100-1_1296x.webp",
+            "products/images/SPF30BodyLotion1100-3_2048x.webp"
         ],
         "reviewers":[
             {

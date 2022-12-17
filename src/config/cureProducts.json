@@ -1,0 +1,37 @@
+{
+    "Products":[
+        {
+            "id": "01",
+            "issue":"Pigmentation",
+            "images":[
+                "products/images/GlycolicTranexamic1200-2-min_2048x.webp",
+                "products/images/GlycolicTranexamic1200-2-min_2048x.webp"
+            ]
+        },
+        {
+            "id": "02",
+            "issue":"Acne",
+            "images":[
+                "products/images/hair-growth-serum-1200--1min-1646492133715_2048x.webp",
+                "products/images/hair-growth-serum-1200--1min-1646492133715_2048x.webp"
+            ]
+        },
+        {
+                "id": "03",
+                "issue":"Dullness",
+                "images":[
+                    "products/images/salicylic-acid-2-serum-1200--2min-1645863954004_2048x.webp",
+                    "products/images/salicylic-acid-2-serum-1200--2min-1645863954004_2048x.webp"
+                ]
+        },
+        {
+            "id": "04",
+            "category": "skin",
+            "issue":"Fine lines",
+            "images":[
+                "products/images/sepicalm-moisturizer-1200--1min-1646470116846_2048x.webp",
+                "products/images/sepicalm-moisturizer-1200--1min-1646470116846_2048x.webp"
+            ]
+    }
+    ]
+}
