@@ -1,10 +1,16 @@
-import React, { useState } from "react";
-import { X } from "react-feather";
+import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import "./leftdrawer.css";
-function LeftDrawer({ isOpenLeftDrawer, setIsOpenLeftDrawer }) {
-  const [clickShopDrawer, setClickShopDrawer] = useState(false);
-  console.log("clickShopDrawer: ", clickShopDrawer);
+import Cookie from "js-cookie";
+//AppContext
+import { AppContext } from "../../contexts/AppContext";
+function LeftDrawer() {
+  const {
+    clickShopDrawer,
+    setClickShopDrawer,
+    isOpenLeftDrawer,
+    setIsOpenLeftDrawer,
+  } = useContext(AppContext);
   return (
     <>
       <Row
@@ -15,7 +21,6 @@ function LeftDrawer({ isOpenLeftDrawer, setIsOpenLeftDrawer }) {
       >
         <Col className="left_drawer_container">
           <Row className="justify-content-end">
-            {/* <X className="leftdrawer_x" /> */}
             <img
               onClick={() => {
                 setIsOpenLeftDrawer(false);
@@ -71,10 +76,20 @@ function LeftDrawer({ isOpenLeftDrawer, setIsOpenLeftDrawer }) {
                     />
                   </span>
                 </li>
-                <li className="left_drawer_category">Skin</li>
-                <li className="left_drawer_category">Hair</li>
-                <li className="left_drawer_category">Bath & Body</li>
-                <li className="left_drawer_category">All Products</li>
+                {["Skin", "Hair", "Bath & Body", "All Products"].map((item) => {
+                  return (
+                    <li
+                      key={item + "p"}
+                      className="left_drawer_category"
+                      onClick={() => {
+                        Cookie.set("collection", item);
+                        window.open(`/collection`, "_self");
+                      }}
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </Col>

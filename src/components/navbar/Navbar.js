@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import LeftDrawer from "../LeftDrawer/LeftDrawer";
 import "./navbar.css";
+//Context
+import { AppContext } from "../../contexts/AppContext";
 function Navbar() {
-  const [isOpenLeftDrawer, setIsOpenLeftDrawer] = useState(false);
+  const { isOpenLeftDrawer, setIsOpenLeftDrawer } = useContext(AppContext);
   return (
     <>
       <Row className="nav_bar_main">
@@ -17,7 +19,12 @@ function Navbar() {
         </Col>
         <Col xs={8} sm={4} md={4} lg={4}>
           <Row className="navbar_logo_container">
-            <img className="brand_logo" src="brand-logo.png" />
+            <img
+              className="brand_logo"
+              src="brand-logo.png"
+              alt="logo"
+              onClick={() => window.open("/", "_self")}
+            />
           </Row>
         </Col>
         <Col xs={2} sm={4} md={4} lg={4}>
@@ -40,10 +47,7 @@ function Navbar() {
           </Row>
         </Col>
       </Row>
-      <LeftDrawer
-        isOpenLeftDrawer={isOpenLeftDrawer}
-        setIsOpenLeftDrawer={setIsOpenLeftDrawer}
-      />
+      <LeftDrawer />
     </>
   );
 }

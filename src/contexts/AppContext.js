@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-
+import Cookies from "js-cookie";
 export const AppContext = React.createContext();
 const AppContextProvider = (props) => {
   const [productList, setProducList] = useState([]);
-  console.log("productList: ", productList);
+  const [productCollection, setProductCollection] = useState(
+    Cookies.get("collection") ? Cookies.get("collection") : "All products"
+  );
+  const [isOpenLeftDrawer, setIsOpenLeftDrawer] = useState(false);
+  const [clickShopDrawer, setClickShopDrawer] = useState(false);
 
   const sideScroll = (element, direction, speed, distance, step) => {
     let scrollAmount = 0;
@@ -25,6 +29,12 @@ const AppContextProvider = (props) => {
         productList,
         setProducList,
         sideScroll,
+        productCollection,
+        setProductCollection,
+        isOpenLeftDrawer,
+        setIsOpenLeftDrawer,
+        clickShopDrawer,
+        setClickShopDrawer,
       }}
     >
       {props.children}

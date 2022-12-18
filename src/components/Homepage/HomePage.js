@@ -48,7 +48,7 @@ function HomePage() {
             <Row>
               {OurValues.Values.map((item, i) => {
                 return (
-                  <Col md={4} key={item?.id}>
+                  <Col md={4} key={item?.id + item.name}>
                     <Card className="px-3 border-0">
                       <img
                         width="48px"
@@ -72,7 +72,7 @@ function HomePage() {
             <Row>
               {OurValues.Values.map((item, i) => {
                 return (
-                  <Col className="" md={4} key={item?.id}>
+                  <Col className="" md={4} key={item?.id + item.value}>
                     <Card className="review_card_hp">
                       <p>{item.value}</p>
                       <b>{item.name}</b>
