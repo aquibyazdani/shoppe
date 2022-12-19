@@ -1,0 +1,37 @@
+.login_page_wrapper{
+    margin: 200px 0 160px 0;
+    justify-content: center;
+}
+.login_header{
+    justify-content: center;
+    margin-bottom: 80px;
+    font-size: 36px;
+    font-weight: 700;
+}
+.input_login{
+    width:100%;
+    max-width: 380px;
+    height: 48px;
+    margin-bottom: 20px;
+    padding: 8px 20px;
+}
+.login_submit_btn{
+    width:100%;
+    max-width: 380px;
+    height: 48px;
+    margin-bottom: 20px;
+    padding: 8px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 16px;
+}
+.forgot_info_login p{
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.forgot_info_login p span{
+    text-decoration: none;
+
+}

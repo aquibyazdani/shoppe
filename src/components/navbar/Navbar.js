@@ -4,8 +4,11 @@ import LeftDrawer from "../LeftDrawer/LeftDrawer";
 import "./navbar.css";
 //Context
 import { AppContext } from "../../contexts/AppContext";
+import RightDrawer from "../RightDrawer/RightDrawer";
 function Navbar() {
-  const { isOpenLeftDrawer, setIsOpenLeftDrawer } = useContext(AppContext);
+  const { isOpenLeftDrawer, setIsOpenLeftDrawer, handleRightDrawer } =
+    useContext(AppContext);
+
   return (
     <>
       <Row className="nav_bar_main">
@@ -30,16 +33,23 @@ function Navbar() {
         <Col xs={2} sm={4} md={4} lg={4}>
           <Row className="justify-content-end">
             <img
+              onClick={() => {
+                handleRightDrawer("Search");
+              }}
               className="navbar_logo_accnt"
               src="./icons/search.svg"
               alt="menu"
             />
             <img
+              onClick={() => window.open("/login", "_self")}
               className="navbar_logo_user"
               src="./icons/user.svg"
               alt="menu"
             />
             <img
+              onClick={() => {
+                handleRightDrawer("Cart");
+              }}
               className="navbar_logo"
               src="./icons/shopping-bag.svg"
               alt="menu"
@@ -48,6 +58,7 @@ function Navbar() {
         </Col>
       </Row>
       <LeftDrawer />
+      <RightDrawer />
     </>
   );
 }

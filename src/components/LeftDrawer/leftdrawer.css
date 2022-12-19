@@ -10,9 +10,28 @@
     -webkit-transition: all 0.5s ease-out;
     z-index: 2;
 }
-.left_drawer_container{
-    padding: 56px 80px 0px 80px;
+.right_drawer{
+    position: fixed;
+    right: -100px;
+    top: 0;
+    transition: width 2s;
+    background-color: #131313;
+    height: 100%;
+    width: 640px;
+    color: white;
+    -webkit-transition: all 0.5s ease-out;
+    z-index: 2;
 }
+.left_drawer_container_sort{
+    overflow-y: auto;
+    padding-left: 5px;
+}
+.left_drawer_container p , .left_drawer_container_sort p{
+    font-size: 27px;
+    font-weight: 700;
+    color: white;
+}
+
 .left_drawer_menu_container{
    display: flex;
    align-items: center; 
@@ -99,7 +118,7 @@
     .left_drawer_menu_register ,.left_drawer_menu_search{
         font-size: 18px;
     }
-    .left_drawer_container{
+    .left_drawer_container,.left_drawer_container_sort{
         padding: 10px;
     }
    
@@ -122,4 +141,75 @@
         min-width: 220px;
         width: 100%;
     }
+}
+.serachbar_right{
+    width: 480px;
+    height: 58px;
+    border: 1px solid grey;
+    background-color: #131313;
+    padding: 16px 20px;
+    color: white;
+}
+
+input:focus {
+    outline: 0;
+}
+.radio_sort_drawer{
+    width: 24px;
+    height: 24px;
+}
+.label_sort_drawer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px;
+    height: 30px;
+    padding-left: 10px;
+}
+.form-check-input{
+    background-color: #131313;
+    border:1px solid #615f5f;
+}
+.form-check-input[type=radio]:checked{
+    border-color: #000000;
+    outline: 0;
+    box-shadow: 0 0 0 1px white;
+    background-color: #000000;
+}
+.form-check-input[type=checkbox]:checked{
+    border-color: #000000;
+    outline: 0;
+    box-shadow: 0 0 0 1px white;
+    background-color: #000000;
+}
+.form-check-input[type=checkbox]{
+width: 24px;
+height: 24px;
+}
+.drawer_footer{
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    height: 60px;
+    justify-content: center;
+    padding-top: 25px;
+    border-top: 1px solid grey;
+}
+.drawer_footer_btn{
+    height: 64px;
+    width: 468px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}
+.drawer_footer_btn :hover{
+    background-color: #cccccc;
 }

@@ -10,11 +10,13 @@ function LeftDrawer() {
     setClickShopDrawer,
     isOpenLeftDrawer,
     setIsOpenLeftDrawer,
+    setIsOpenRightDrawer,
+    setRightDrawerMenu,
   } = useContext(AppContext);
   return (
     <>
       <Row
-        className="left_drawer"
+        className="left_drawer px-5 pt-5"
         style={{
           left: isOpenLeftDrawer ? "0px" : "-700px",
         }}
@@ -49,7 +51,14 @@ function LeftDrawer() {
                 </li>
                 <li className="left_drawer_menu">Knowledge</li>
                 <li className="left_drawer_menu pb-4">Track Order</li>
-                <li className="left_drawer_menu_search">
+                <li
+                  className="left_drawer_menu_search"
+                  onClick={() => {
+                    setIsOpenLeftDrawer(false);
+                    setRightDrawerMenu("search");
+                    setIsOpenRightDrawer(true);
+                  }}
+                >
                   <p>Search</p>
                   <span>
                     <img

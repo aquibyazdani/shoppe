@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 //Context
 import Collection from "./components/Collections/Collection";
+import Login from "./components/Account/Login";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage />}></Route>
           <Route path={`/collection`} element={<Collection />}></Route>
+          <Route path={`/login`} element={<Login />}></Route>
         </Routes>
         <Footer />
       </Router>

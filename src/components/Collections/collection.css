@@ -30,6 +30,7 @@
     justify-content: center;
     height: 42px;
     justify-content: left;
+    cursor: pointer;
 }
 .product_list_wrapper{
     padding-top: 20px;

@@ -3,10 +3,10 @@ import { Col, Row } from "reactstrap";
 import "./collection.css";
 //CONTEXT
 import { AppContext } from "../../contexts/AppContext";
-import { ChevronDown, Star } from "react-feather";
+import { ChevronDown } from "react-feather";
 import ProductList from "../../config/productlist.json";
 function Collection() {
-  const { productCollection } = useContext(AppContext);
+  const { productCollection, handleRightDrawer } = useContext(AppContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [imageIndex, setImageIndex] = useState();
 
@@ -21,6 +21,7 @@ function Collection() {
       );
     }
   }, [productCollection]);
+
   return (
     <>
       <Row className="coltn_wrapper justify-content-center">
@@ -37,7 +38,10 @@ function Collection() {
         <Col md={10} className="clctn_filter_wrapper">
           <Row className="clctn_filtr_bar">
             <Col className="d-flex justify-content-start">
-              <div className="filter_btn">
+              <div
+                className="filter_btn"
+                onClick={() => handleRightDrawer("Filter")}
+              >
                 <Row className="justify-content-center">
                   <Col>
                     <p>Filter</p>{" "}
@@ -50,7 +54,10 @@ function Collection() {
             </Col>
 
             <Col className="d-flex justify-content-end">
-              <div className="filter_btn">
+              <div
+                className="filter_btn"
+                onClick={() => handleRightDrawer("Sort")}
+              >
                 <Row className="justify-content-center">
                   <Col>
                     <p>Sort</p>{" "}

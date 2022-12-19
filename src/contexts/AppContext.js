@@ -8,7 +8,8 @@ const AppContextProvider = (props) => {
   );
   const [isOpenLeftDrawer, setIsOpenLeftDrawer] = useState(false);
   const [clickShopDrawer, setClickShopDrawer] = useState(false);
-
+  const [isOpenRightDrawer, setIsOpenRightDrawer] = useState(false);
+  const [rightDrawerMenu, setRightDrawerMenu] = useState("Search");
   const sideScroll = (element, direction, speed, distance, step) => {
     let scrollAmount = 0;
     let slideTimer = setInterval(function () {
@@ -23,6 +24,11 @@ const AppContextProvider = (props) => {
       }
     }, speed);
   };
+
+  const handleRightDrawer = (val) => {
+    setIsOpenRightDrawer(!isOpenRightDrawer);
+    setRightDrawerMenu(val);
+  };
   return (
     <AppContext.Provider
       value={{
@@ -35,6 +41,11 @@ const AppContextProvider = (props) => {
         setIsOpenLeftDrawer,
         clickShopDrawer,
         setClickShopDrawer,
+        isOpenRightDrawer,
+        setIsOpenRightDrawer,
+        rightDrawerMenu,
+        setRightDrawerMenu,
+        handleRightDrawer,
       }}
     >
       {props.children}
