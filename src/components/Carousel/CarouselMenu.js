@@ -4,7 +4,7 @@ import "./carousel.css";
 import { ChevronLeft, ChevronRight } from "react-feather";
 //Context
 import { AppContext } from "../../contexts/AppContext";
-function CarouselProduct({ section, action, productlist, concern, id }) {
+function CarouselMenu({ section, action, productlist, concern, id }) {
   //Context
   const { sideScroll, productPageHandler } = useContext(AppContext);
   const [activeDot, setActiveDot] = useState("left");
@@ -69,12 +69,7 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
                   sm={6}
                   md={!concern ? 3 : 4}
                 >
-                  <img
-                    onClick={() => productPageHandler(item.id)}
-                    width="100%"
-                    src={item?.images[0]}
-                    alt="salylic"
-                  />
+                  <img width="100%" src={item?.images[0]} alt="salylic" />
                   {item?.name && (
                     <Col className="carousel_productinfo">
                       <p className="carousel_product_name">{item?.name}</p>
@@ -133,4 +128,4 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
   );
 }
 
-export default CarouselProduct;
+export default CarouselMenu;

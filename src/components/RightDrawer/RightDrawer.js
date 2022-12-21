@@ -63,7 +63,7 @@ function RightDrawer() {
                                 name="radio1"
                                 type="radio"
                                 className="radio_sort_drawer"
-                              />{" "}
+                              />
                               <Label className="label_sort_drawer" check>
                                 {sort}
                               </Label>

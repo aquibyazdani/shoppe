@@ -5,7 +5,7 @@ import ShopByConcerns from "../shopbyconcerns/ShopByConcerns";
 import "./homepage.css";
 import productlist from "../../config/productlist.json";
 import OurValues from "../../config/ourvalues.json";
-
+//context
 function HomePage() {
   return (
     <>

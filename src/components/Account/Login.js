@@ -11,7 +11,7 @@ function Login() {
             <input type="email" placeholder="Email" className="input_login" />
             <input
               type="password"
-              placeholder="Email"
+              placeholder="Password"
               className="input_login"
             />
             <button className="login_submit_btn">Sign In</button>

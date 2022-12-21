@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Col, Row } from "reactstrap";
 import "./collection.css";
+import ProductList from "../../config/productlist.json";
+
 //CONTEXT
 import { AppContext } from "../../contexts/AppContext";
 import { ChevronDown } from "react-feather";
-import ProductList from "../../config/productlist.json";
 function Collection() {
-  const { productCollection, handleRightDrawer } = useContext(AppContext);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const {
+    productCollection,
+    handleRightDrawer,
+    filteredProducts,
+    setFilteredProducts,
+    productPageHandler,
+  } = useContext(AppContext);
   const [imageIndex, setImageIndex] = useState();
 
   useEffect(() => {
@@ -20,7 +26,7 @@ function Collection() {
         )
       );
     }
-  }, [productCollection]);
+  }, [productCollection, setFilteredProducts]);
 
   return (
     <>
@@ -73,7 +79,17 @@ function Collection() {
           <Row className="product_list_wrapper">
             {filteredProducts.map((product, i) => {
               return (
-                <Col md="4" className="mb-4" key={product.name + i}>
+                <Col
+                  md="4"
+                  xs={6}
+                  className="mb-4"
+                  key={product.name + i}
+                  onClick={() => {
+                    productPageHandler(product.id);
+                    // setSelectedProductId(product?.id);
+                    // setPageSwitch("product page");
+                  }}
+                >
                   <span>
                     <img
                       width="100%"

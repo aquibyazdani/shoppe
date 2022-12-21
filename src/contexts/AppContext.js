@@ -1,15 +1,25 @@
 import React, { useState } from "react";
-import Cookies from "js-cookie";
+import ProductList from "../config/productlist.json";
+
 export const AppContext = React.createContext();
 const AppContextProvider = (props) => {
   const [productList, setProducList] = useState([]);
-  const [productCollection, setProductCollection] = useState(
-    Cookies.get("collection") ? Cookies.get("collection") : "All products"
-  );
+  const [productCollection, setProductCollection] = useState("");
   const [isOpenLeftDrawer, setIsOpenLeftDrawer] = useState(false);
   const [clickShopDrawer, setClickShopDrawer] = useState(false);
   const [isOpenRightDrawer, setIsOpenRightDrawer] = useState(false);
   const [rightDrawerMenu, setRightDrawerMenu] = useState("Search");
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [pageSwitch, setPageSwitch] = useState("home");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const productPageHandler = (id) => {
+    setSelectedProductId(id);
+    setPageSwitch("product page");
+    setSelectedProduct(ProductList.Products.filter((item) => item.id === id));
+  };
+
   const sideScroll = (element, direction, speed, distance, step) => {
     let scrollAmount = 0;
     let slideTimer = setInterval(function () {
@@ -46,6 +56,15 @@ const AppContextProvider = (props) => {
         rightDrawerMenu,
         setRightDrawerMenu,
         handleRightDrawer,
+        selectedProduct,
+        setSelectedProduct,
+        selectedProductId,
+        setSelectedProductId,
+        pageSwitch,
+        setPageSwitch,
+        filteredProducts,
+        setFilteredProducts,
+        productPageHandler,
       }}
     >
       {props.children}

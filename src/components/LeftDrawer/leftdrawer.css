@@ -122,7 +122,7 @@
         padding: 10px;
     }
    
-    .left_drawer{
+    .left_drawer, .right_drawer{
         width: 100%;
     }
     .search_right_icon{
@@ -181,8 +181,8 @@ input:focus {
 }
 .form-check-input[type=checkbox]:checked{
     border-color: #000000;
-    outline: 0;
-    box-shadow: 0 0 0 1px white;
+    outline: 1px solid white;
+    /* box-shadow: 0 0 0 1px white; */
     background-color: #000000;
 }
 .form-check-input[type=checkbox]{

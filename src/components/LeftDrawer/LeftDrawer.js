@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import "./leftdrawer.css";
-import Cookie from "js-cookie";
 //AppContext
 import { AppContext } from "../../contexts/AppContext";
 function LeftDrawer() {
@@ -12,6 +11,8 @@ function LeftDrawer() {
     setIsOpenLeftDrawer,
     setIsOpenRightDrawer,
     setRightDrawerMenu,
+    setPageSwitch,
+    setProductCollection,
   } = useContext(AppContext);
   return (
     <>
@@ -91,8 +92,9 @@ function LeftDrawer() {
                       key={item + "p"}
                       className="left_drawer_category"
                       onClick={() => {
-                        Cookie.set("collection", item);
-                        window.open(`/collection`, "_self");
+                        setProductCollection(item);
+                        setPageSwitch("collection");
+                        setIsOpenLeftDrawer(false);
                       }}
                     >
                       {item}

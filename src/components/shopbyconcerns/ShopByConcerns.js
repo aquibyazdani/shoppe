@@ -5,7 +5,7 @@ import cureProducts from "../../config/cureProducts.json";
 
 //Context
 import { AppContext } from "../../contexts/AppContext";
-import CarouselProduct from "../Carousel/CarouselProduct";
+import CarouselMenu from "../Carousel/CarouselMenu";
 function ShopByConcerns() {
   // Contexts
   const {} = useContext(AppContext);
@@ -26,7 +26,7 @@ function ShopByConcerns() {
               width="100%"
             />
           </div>
-          <CarouselProduct
+          <CarouselMenu
             productlist={cureProducts.Products}
             concern={true}
             id="cureCaarousel"
