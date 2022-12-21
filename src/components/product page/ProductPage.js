@@ -5,15 +5,16 @@ import "./productpage.css";
 //context
 import { AppContext } from "../../contexts/AppContext";
 function ProductPage() {
-  const { selectedProduct } = useContext(AppContext);
+  const { selectedProduct, handleAddToCart } = useContext(AppContext);
   const [imageIndex, setImageIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <>
       <Row className="product_page_container">
         {selectedProduct?.map((item, i) => {
           return (
-            <Col md={12}>
+            <Col key={item.name} md={12}>
               <Row>
                 <Col md={6}>
                   <img
@@ -65,17 +66,39 @@ function ProductPage() {
                       <p className="prdctdetls_quantity">Quantity</p>
                       <Row className="quntity_wrapper_prdct">
                         <Col sm={4} md={4}>
-                          <Minus className="cursor-pointer" width={"18px"} />
+                          <Minus
+                            className="cursor-pointer"
+                            width={"18px"}
+                            onClick={() => {
+                              if (quantity > 1) {
+                                setQuantity(quantity - 1);
+                              }
+                            }}
+                          />
                         </Col>
                         <Col sm={4} md={4} className="text-center">
-                          1
+                          {quantity}
                         </Col>{" "}
                         <Col sm={4} md={4}>
-                          <Plus className="cursor-pointer" width={"18px"} />
+                          <Plus
+                            className="cursor-pointer"
+                            width={"18px"}
+                            onClick={() => setQuantity(quantity + 1)}
+                          />
                         </Col>
                       </Row>
                       <Row>
-                        <button className="addcart_prdct_page">
+                        <button
+                          className="addcart_prdct_page"
+                          onClick={() => {
+                            handleAddToCart(
+                              item.name,
+                              item.offerPrice,
+                              1,
+                              item.images[0]
+                            );
+                          }}
+                        >
                           Add to cart
                         </button>
                       </Row>

@@ -5,7 +5,8 @@ import ProductPage from "./product page/ProductPage";
 //context
 import { AppContext } from "../contexts/AppContext";
 function MainPage() {
-  const { pageSwitch } = useContext(AppContext);
+  const { pageSwitch, setCartProducts } = useContext(AppContext);
+
   return (
     <>
       {pageSwitch === "home" && <HomePage />}

@@ -6,7 +6,8 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 import { AppContext } from "../../contexts/AppContext";
 function CarouselProduct({ section, action, productlist, concern, id }) {
   //Context
-  const { sideScroll, productPageHandler } = useContext(AppContext);
+  const { sideScroll, productPageHandler, handleAddToCart } =
+    useContext(AppContext);
   const [activeDot, setActiveDot] = useState("left");
   const [scrollDistance, setScrollDistance] = useState(800);
 
@@ -62,6 +63,7 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
           {section && <p className="primary_title_carousel">{section ?? ""}</p>}
           <Row id={id} className="product_carousel_container">
             {productlist.map((item, index) => {
+              console.log("item: ", item);
               return (
                 <Col
                   className="carousel_card_container"
@@ -89,7 +91,20 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
                     </Col>
                   )}
                   {action && (
-                    <button className="carousel_action_btn">{action}</button>
+                    <button
+                      className="carousel_action_btn"
+                      onClick={() => {
+                        console.log("llll");
+                        handleAddToCart(
+                          item?.name,
+                          item?.offerPrice,
+                          1,
+                          item?.images[0]
+                        );
+                      }}
+                    >
+                      {action}
+                    </button>
                   )}
                   {item?.issue && (
                     <Row>

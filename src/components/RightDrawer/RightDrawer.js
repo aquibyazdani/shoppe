@@ -1,14 +1,19 @@
 import React, { useContext } from "react";
 import { Row, Col, FormGroup, Input, Label } from "reactstrap";
 import "../LeftDrawer/leftdrawer.css";
-import ProductList from "../../config/productlist.json";
 
 //AppContext
 import { AppContext } from "../../contexts/AppContext";
+import { Minus, Plus, Trash } from "react-feather";
 function RightDrawer() {
-  const { isOpenRightDrawer, setIsOpenRightDrawer, rightDrawerMenu } =
-    useContext(AppContext);
-  console.log("rightDrawerMenu", rightDrawerMenu);
+  const {
+    isOpenRightDrawer,
+    setIsOpenRightDrawer,
+    rightDrawerMenu,
+
+    quantityCart,
+    setQuantityCart,
+  } = useContext(AppContext);
 
   return (
     <>
@@ -109,6 +114,51 @@ function RightDrawer() {
               <div>
                 <div className="left_drawer_container_sort">
                   <p className="mb-4">{rightDrawerMenu}</p>
+                  {JSON.parse(localStorage.getItem("cartProducts"))?.map(
+                    (item) => {
+                      return (
+                        <Row key={item?.id + 67}>
+                          <Col sm={4}>
+                            <img width="50%" src={item?.src} alt={item?.name} />
+                          </Col>
+                          <Col sm={4} className="cart_product_details">
+                            <p>{item?.name}</p>
+                            <p>
+                              {item?.price}{" "}
+                              {`x ${quantityCart > 1 ? quantityCart : ""}`}
+                            </p>
+                          </Col>
+                          <Col sm={4}>
+                            <Row>
+                              <Col>
+                                <Minus
+                                  onClick={() => {
+                                    if (quantityCart > 1) {
+                                      setQuantityCart(quantityCart - 1);
+                                    }
+                                  }}
+                                />
+                              </Col>
+                              <Col>
+                                <Plus
+                                  onClick={() => {
+                                    setQuantityCart(quantityCart + 1);
+                                  }}
+                                />
+                              </Col>
+                              <Col>
+                                <Trash />
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                      );
+                    }
+                  )}
+
+                  <Row className="drawer_footer">
+                    <div className="drawer_footer_btn">Go to cart</div>
+                  </Row>
                 </div>
               </div>
             )}

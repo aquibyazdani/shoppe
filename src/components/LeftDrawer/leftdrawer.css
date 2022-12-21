@@ -213,3 +213,8 @@ height: 24px;
 .drawer_footer_btn :hover{
     background-color: #cccccc;
 }
+.cart_product_details p{
+font-size: 16px;
+font-weight: normal;
+margin: 0;
+}
