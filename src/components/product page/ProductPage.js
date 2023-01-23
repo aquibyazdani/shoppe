@@ -5,14 +5,15 @@ import "./productpage.css";
 //context
 import { AppContext } from "../../contexts/AppContext";
 function ProductPage() {
-  const { selectedProduct, handleAddToCart } = useContext(AppContext);
+  const { selectedProduct, handleAddToCart, quantity, setQuantity } =
+    useContext(AppContext);
   const [imageIndex, setImageIndex] = useState(0);
-  const [quantity, setQuantity] = useState(1);
 
   return (
     <>
       <Row className="product_page_container">
         {selectedProduct?.map((item, i) => {
+          console.log("item: ", item);
           return (
             <Col key={item.name} md={12}>
               <Row>
@@ -94,8 +95,9 @@ function ProductPage() {
                             handleAddToCart(
                               item.name,
                               item.offerPrice,
-                              1,
-                              item.images[0]
+                              quantity ?? 1,
+                              item.images[0],
+                              item?.id
                             );
                           }}
                         >

@@ -25,6 +25,7 @@
 .left_drawer_container_sort{
     overflow-y: auto;
     padding-left: 5px;
+    height: 80%;
 }
 .left_drawer_container p , .left_drawer_container_sort p{
     font-size: 27px;

@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 import { AppContext } from "../../contexts/AppContext";
 function CarouselProduct({ section, action, productlist, concern, id }) {
   //Context
-  const { sideScroll, productPageHandler, handleAddToCart } =
+  const { sideScroll, productPageHandler, handleAddToCart, cartProducts } =
     useContext(AppContext);
   const [activeDot, setActiveDot] = useState("left");
   const [scrollDistance, setScrollDistance] = useState(800);
@@ -43,9 +43,11 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
     }
   }, []);
 
-  // useEffect(() => {
-  //   document.getElementById(id).addEventListener("scroll", function (e) {});
-  // }, []);
+  // function handleCheckCartTrue(id) {
+  //   const filtered = cartProducts.filter((obj) => obj.id === "03");
+  //   console.log(console.log("@@cartProducts: ", filtered));
+  // }
+
   return (
     <>
       <Row className={!concern ? "carousel_parent" : "concern_carousel_parent"}>
@@ -99,7 +101,8 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
                           item?.name,
                           item?.offerPrice,
                           1,
-                          item?.images[0]
+                          item?.images[0],
+                          item?.id
                         );
                       }}
                     >

@@ -13,8 +13,8 @@ const AppContextProvider = (props) => {
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [pageSwitch, setPageSwitch] = useState("home");
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [quantityCart, setQuantityCart] = useState(1);
-
+  const [quantity, setQuantity] = useState(1);
+  const [cartProducts, setCartProducts] = useState([]);
   const productPageHandler = (id) => {
     setSelectedProductId(id);
     setPageSwitch("product page");
@@ -40,13 +40,35 @@ const AppContextProvider = (props) => {
     setIsOpenRightDrawer(!isOpenRightDrawer);
     setRightDrawerMenu(val);
   };
-  const handleAddToCart = (name, price, quantity, src) => {
-    console.log("name: ", name);
-    let obj = { name: name, price: price, quantity: quantity ?? 1, src: src };
-    let cart = [];
-    cart.push({ ...obj });
+  // const handleAddToCart = (name, price, quantity, src, id) => {
+  //   let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
+  //   let obj = {
+  //     id: id,
+  //     name: name,
+  //     price: price,
+  //     quantity: quantity ?? 1,
+  //     src: src,
+  //   };
+  //   cart.push({ ...obj });
+  //   localStorage.setItem("cartProducts", JSON.stringify(cart));
+  // };
+  const handleAddToCart = (name, price, quantity, src, id) => {
+    let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
+    cart.push(...ProductList.Products.filter((item) => item.id === id));
     localStorage.setItem("cartProducts", JSON.stringify(cart));
+    setCartProducts(cart);
   };
+
+  function handleDeleteCart(id) {
+    let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
+    const filtered = cart.filter((obj) => obj.id !== id);
+    setCartProducts(filtered);
+    localStorage.setItem("cartProducts", JSON.stringify(filtered));
+  }
+
+  useEffect(() => {
+    setCartProducts(JSON.parse(localStorage.getItem("cartProducts")));
+  }, []);
   return (
     <AppContext.Provider
       value={{
@@ -73,9 +95,12 @@ const AppContextProvider = (props) => {
         filteredProducts,
         setFilteredProducts,
         productPageHandler,
-        quantityCart,
-        setQuantityCart,
+        quantity,
+        setQuantity,
         handleAddToCart,
+        handleDeleteCart,
+        cartProducts,
+        setCartProducts,
       }}
     >
       {props.children}

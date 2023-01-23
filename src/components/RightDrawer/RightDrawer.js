@@ -10,9 +10,10 @@ function RightDrawer() {
     isOpenRightDrawer,
     setIsOpenRightDrawer,
     rightDrawerMenu,
-
-    quantityCart,
-    setQuantityCart,
+    setQuantity,
+    quantity,
+    handleDeleteCart,
+    cartProducts,
   } = useContext(AppContext);
 
   return (
@@ -114,47 +115,53 @@ function RightDrawer() {
               <div>
                 <div className="left_drawer_container_sort">
                   <p className="mb-4">{rightDrawerMenu}</p>
-                  {JSON.parse(localStorage.getItem("cartProducts"))?.map(
-                    (item) => {
-                      return (
-                        <Row key={item?.id + 67}>
-                          <Col sm={4}>
-                            <img width="50%" src={item?.src} alt={item?.name} />
-                          </Col>
-                          <Col sm={4} className="cart_product_details">
-                            <p>{item?.name}</p>
-                            <p>
-                              {item?.price}{" "}
-                              {`x ${quantityCart > 1 ? quantityCart : ""}`}
-                            </p>
-                          </Col>
-                          <Col sm={4}>
-                            <Row>
-                              <Col>
-                                <Minus
-                                  onClick={() => {
-                                    if (quantityCart > 1) {
-                                      setQuantityCart(quantityCart - 1);
-                                    }
-                                  }}
-                                />
-                              </Col>
-                              <Col>
-                                <Plus
-                                  onClick={() => {
-                                    setQuantityCart(quantityCart + 1);
-                                  }}
-                                />
-                              </Col>
-                              <Col>
-                                <Trash />
-                              </Col>
-                            </Row>
-                          </Col>
-                        </Row>
-                      );
-                    }
-                  )}
+                  {cartProducts?.map((item) => {
+                    return (
+                      <Row key={item?.id + 67} className="py-1">
+                        <Col sm={4}>
+                          <img
+                            width="50%"
+                            src={item?.images[0]}
+                            alt={item?.name}
+                          />
+                        </Col>
+                        <Col sm={4} className="cart_product_details">
+                          <p>{item?.name}</p>
+                          <p>
+                            {item?.price} {`x ${quantity > 1 ? quantity : ""}`}
+                          </p>
+                        </Col>
+                        <Col sm={4}>
+                          <Row>
+                            <Col>
+                              <Minus
+                                onClick={() => {
+                                  if (quantity > 1) {
+                                    setQuantity(quantity - 1);
+                                  }
+                                }}
+                              />
+                            </Col>
+                            <Col>
+                              <Plus
+                                onClick={() => {
+                                  setQuantity(quantity + 1);
+                                }}
+                              />
+                            </Col>
+                            <Col>
+                              <Trash
+                                onClick={() => {
+                                  console.log("delte");
+                                  handleDeleteCart(item?.id);
+                                }}
+                              />
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    );
+                  })}
 
                   <Row className="drawer_footer">
                     <div className="drawer_footer_btn">Go to cart</div>
