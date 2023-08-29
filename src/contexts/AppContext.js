@@ -15,6 +15,7 @@ const AppContextProvider = (props) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [cartProducts, setCartProducts] = useState([]);
+  const [isOpenZoomProduct, setIsOpenZoomProduct] = useState(false);
   const productPageHandler = (id) => {
     setSelectedProductId(id);
     setPageSwitch("product page");
@@ -57,6 +58,9 @@ const AppContextProvider = (props) => {
     cart.push(...ProductList.Products.filter((item) => item.id === id));
     localStorage.setItem("cartProducts", JSON.stringify(cart));
     setCartProducts(cart);
+    setTimeout(() => {
+      handleRightDrawer("Cart");
+    }, 500);
   };
 
   function handleDeleteCart(id) {
@@ -69,6 +73,7 @@ const AppContextProvider = (props) => {
   useEffect(() => {
     setCartProducts(JSON.parse(localStorage.getItem("cartProducts")));
   }, []);
+  const toggleProductZoom = () => setIsOpenZoomProduct(!isOpenZoomProduct);
   return (
     <AppContext.Provider
       value={{
@@ -101,6 +106,9 @@ const AppContextProvider = (props) => {
         handleDeleteCart,
         cartProducts,
         setCartProducts,
+        isOpenZoomProduct,
+        setIsOpenZoomProduct,
+        toggleProductZoom,
       }}
     >
       {props.children}

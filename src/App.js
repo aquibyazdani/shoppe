@@ -15,9 +15,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<MainPage />}></Route>
-          <Route path={`/collection`} element={<Collection />}></Route>
+          <Route path={`/collection:name`} element={<Collection />}></Route>
           <Route path={`/login`} element={<Login />}></Route>
-          <Route path={`/product-page`} element={<ProductPage />}></Route>
+          <Route path={`/product:name`} element={<ProductPage />}></Route>
         </Routes>
         <Footer />
       </Router>

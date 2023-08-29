@@ -1,19 +1,25 @@
 import React, { useContext, useState } from "react";
 import { Minus, Plus, Star } from "react-feather";
-import { Col, Row } from "reactstrap";
+import { Col, Modal, Row } from "reactstrap";
 import "./productpage.css";
 //context
 import { AppContext } from "../../contexts/AppContext";
+import ZoomProduct from "../Zoom/ZoomProduct";
 function ProductPage() {
-  const { selectedProduct, handleAddToCart, quantity, setQuantity } =
-    useContext(AppContext);
+  const {
+    selectedProduct,
+    handleAddToCart,
+    quantity,
+    setQuantity,
+    toggleProductZoom,
+    isOpenZoomProduct,
+  } = useContext(AppContext);
   const [imageIndex, setImageIndex] = useState(0);
 
   return (
     <>
       <Row className="product_page_container">
         {selectedProduct?.map((item, i) => {
-          console.log("item: ", item);
           return (
             <Col key={item.name} md={12}>
               <Row>
@@ -22,6 +28,12 @@ function ProductPage() {
                     width="100%"
                     src={item?.images[imageIndex]}
                     alt="Product"
+                    style={{
+                      cursor: "zoom-in",
+                    }}
+                    onClick={() => {
+                      toggleProductZoom();
+                    }}
                   />
                   <Row>
                     {item.images.map((image, i) => {
@@ -114,6 +126,17 @@ function ProductPage() {
                   </Row>
                 </Col>
               </Row>
+              <Modal
+                isOpen={isOpenZoomProduct}
+                toggle={toggleProductZoom}
+                fullscreen={true}
+                centered={true}
+              >
+                <ZoomProduct
+                  currentSrc={item?.images[imageIndex]}
+                  images={item.images}
+                />
+              </Modal>
             </Col>
           );
         })}
