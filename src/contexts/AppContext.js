@@ -16,12 +16,13 @@ const AppContextProvider = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [cartProducts, setCartProducts] = useState([]);
   const [isOpenZoomProduct, setIsOpenZoomProduct] = useState(false);
+  const [activeCollection, setActiveCollection] = useState();
+
   const productPageHandler = (id) => {
     setSelectedProductId(id);
     setPageSwitch("product page");
     setSelectedProduct(ProductList.Products.filter((item) => item.id === id));
   };
-
   const sideScroll = (element, direction, speed, distance, step) => {
     let scrollAmount = 0;
     let slideTimer = setInterval(function () {
@@ -109,6 +110,8 @@ const AppContextProvider = (props) => {
         isOpenZoomProduct,
         setIsOpenZoomProduct,
         toggleProductZoom,
+        activeCollection,
+        setActiveCollection,
       }}
     >
       {props.children}

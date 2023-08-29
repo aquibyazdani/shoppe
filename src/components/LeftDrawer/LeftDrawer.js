@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import "./leftdrawer.css";
+import { Link } from "react-router-dom";
 //AppContext
 import { AppContext } from "../../contexts/AppContext";
 function LeftDrawer() {
@@ -14,6 +15,10 @@ function LeftDrawer() {
     setPageSwitch,
     setProductCollection,
   } = useContext(AppContext);
+  console.log("isOpenLeftDrawer", isOpenLeftDrawer);
+  const makeLink = (name) => {
+    return name?.split(" ").join("-").toLowerCase();
+  };
   return (
     <>
       <Row
@@ -88,17 +93,18 @@ function LeftDrawer() {
                 </li>
                 {["Skin", "Hair", "Bath & Body", "All Products"].map((item) => {
                   return (
-                    <li
+                    <Link
                       key={item + "p"}
-                      className="left_drawer_category"
+                      to={`/collection/${makeLink(item)}`}
+                      className="no-decoration"
                       onClick={() => {
                         setProductCollection(item);
                         setPageSwitch("collection");
-                        setIsOpenLeftDrawer(false);
+                        setIsOpenLeftDrawer(!isOpenLeftDrawer);
                       }}
                     >
-                      {item}
-                    </li>
+                      <li className="left_drawer_category">{item}</li>
+                    </Link>
                   );
                 })}
               </ul>

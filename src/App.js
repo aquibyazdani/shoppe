@@ -8,6 +8,8 @@ import Collection from "./components/Collections/Collection";
 import Login from "./components/Account/Login";
 import ProductPage from "./components/product page/ProductPage";
 import MainPage from "./components/MainPage";
+import NotFound from "./components/404 Page/NotFound";
+
 function App() {
   return (
     <>
@@ -15,9 +17,14 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<MainPage />}></Route>
-          <Route path={`/collection:name`} element={<Collection />}></Route>
+          <Route
+            exact
+            path="/collection/:name"
+            element={<Collection />}
+          ></Route>
           <Route path={`/login`} element={<Login />}></Route>
           <Route path={`/product:name`} element={<ProductPage />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <Footer />
       </Router>

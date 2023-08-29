@@ -13,26 +13,64 @@ function Collection() {
     filteredProducts,
     setFilteredProducts,
     productPageHandler,
+    setActiveCollection,
+    activeCollection,
   } = useContext(AppContext);
   const [imageIndex, setImageIndex] = useState();
 
+  // useEffect(() => {
+  //   if (productCollection === "All Products") {
+  //     setFilteredProducts(ProductList.Products);
+  //   } else {
+  //     setFilteredProducts(
+  //       ProductList.Products.filter(
+  //         (item) => item.category === productCollection
+  //       )
+  //     );
+  //   }
+  // }, [productCollection, setFilteredProducts]);
+
   useEffect(() => {
-    if (productCollection === "All Products") {
-      setFilteredProducts(ProductList.Products);
-    } else {
-      setFilteredProducts(
-        ProductList.Products.filter(
-          (item) => item.category === productCollection
-        )
-      );
+    if (window.location.href.includes("collection")) {
+      if (
+        window.location.pathname
+          .split("/")[2]
+          ?.split("-")
+          .join(" ")
+          .toLowerCase() == "all products"
+      ) {
+        console.log("true");
+        setActiveCollection(ProductList.Products);
+      } else if (
+        window.location.pathname.split("/")[2]?.includes("best-selling")
+      ) {
+        const allProducts = ProductList.Products.filter(
+          (products) => products?.["best-selling"] === true
+        );
+        setActiveCollection(allProducts);
+      } else {
+        const allProducts = ProductList.Products.filter(
+          (products) =>
+            products?.category.toLowerCase() ==
+            window.location.pathname.split("/")[2]?.split("-").join(" ")
+        );
+
+        setActiveCollection(allProducts);
+      }
     }
-  }, [productCollection, setFilteredProducts]);
+  }, [window.location.href]);
 
   return (
     <>
       <Row className="coltn_wrapper justify-content-center">
         <Col md={5} className="coltn_wrapper_col text-center">
-          <b>{productCollection}</b>
+          <b>
+            {window.location.pathname
+              .split("/")[2]
+              ?.split("-")
+              .join(" ")
+              ?.toUpperCase() ?? "hdgjkhkj "}
+          </b>
           <p>
             Shop our efficacious, transparent, and research-backed range of
             skincare & haircare products. Each product is formulated to target
@@ -77,7 +115,7 @@ function Collection() {
           </Row>
           <hr />
           <Row className="product_list_wrapper">
-            {filteredProducts.map((product, i) => {
+            {activeCollection?.map((product, i) => {
               return (
                 <Col
                   md="4"
@@ -97,7 +135,9 @@ function Collection() {
                         setImageIndex(i);
                       }}
                       src={
-                        i === imageIndex ? product.images[1] : product.images[0]
+                        i === imageIndex
+                          ? `/${product.images[1]}`
+                          : `/${product.images[0]}`
                       }
                       alt={product.name}
                     />

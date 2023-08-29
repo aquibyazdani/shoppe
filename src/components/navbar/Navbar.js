@@ -15,7 +15,7 @@ function Navbar() {
         <Col xs={2} sm={4} md={4} lg={4}>
           <img
             className="navbar_logo"
-            src="./icons/menu.svg"
+            src="/icons/menu.svg"
             alt="menu"
             onClick={() => setIsOpenLeftDrawer(!isOpenLeftDrawer)}
           />
@@ -24,7 +24,7 @@ function Navbar() {
           <Row className="navbar_logo_container">
             <img
               className="brand_logo"
-              src="brand-logo.png"
+              src="/brand-logo.png"
               alt="logo"
               onClick={() => window.open("/", "_self")}
             />
@@ -37,13 +37,13 @@ function Navbar() {
                 handleRightDrawer("Search");
               }}
               className="navbar_logo_accnt"
-              src="./icons/search.svg"
+              src="/icons/search.svg"
               alt="menu"
             />
             <img
               onClick={() => window.open("/login", "_self")}
               className="navbar_logo_user"
-              src="./icons/user.svg"
+              src="/icons/user.svg"
               alt="menu"
             />
             <img
@@ -51,7 +51,7 @@ function Navbar() {
                 handleRightDrawer("Cart");
               }}
               className="navbar_logo"
-              src="./icons/shopping-bag.svg"
+              src="/icons/shopping-bag.svg"
               alt="menu"
             />
           </Row>
