@@ -47,6 +47,7 @@ function Collection() {
         const allProducts = ProductList.Products.filter(
           (products) => products?.["best-selling"] === true
         );
+
         setActiveCollection(allProducts);
       } else {
         const allProducts = ProductList.Products.filter(
