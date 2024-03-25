@@ -17,7 +17,8 @@ const AppContextProvider = (props) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [isOpenZoomProduct, setIsOpenZoomProduct] = useState(false);
   const [activeCollection, setActiveCollection] = useState();
-
+  const [allCategories, setAllCategories] = useState([]);
+  console.log("allCategories: ", allCategories);
   const productPageHandler = (id) => {
     setSelectedProductId(id);
     setPageSwitch("product page");
@@ -64,6 +65,44 @@ const AppContextProvider = (props) => {
     }, 500);
   };
 
+  function getAllUniqueCategories(products) {
+    // Initialize an empty array to store unique categories
+    let uniqueCategories = [];
+
+    // Iterate over each product
+    products.forEach((product) => {
+      // Check if the category of the current product is not already in the uniqueCategories array
+      if (!uniqueCategories.includes(product.category)) {
+        // Add the category to the uniqueCategories array
+        uniqueCategories.push(product.category);
+      }
+    });
+    uniqueCategories.push("All Products");
+    return uniqueCategories;
+  }
+  function filterByCategory(products, categories) {
+    // If no categories provided, return empty array
+    if (categories.includes("All Products")) {
+      setActiveCollection(products);
+    } else {
+      // Initialize an array to hold all filtered products
+      let allFilteredProducts = [];
+
+      // Iterate over each category
+      categories.forEach((category) => {
+        // Filter products for the current category
+        const filteredProducts = products.filter(
+          (product) => product.category === category
+        );
+        // Concatenate filtered products to the array
+        allFilteredProducts = allFilteredProducts.concat(filteredProducts);
+      });
+
+      // return allFilteredProducts;
+
+      setActiveCollection(allFilteredProducts);
+    }
+  }
   function handleDeleteCart(id) {
     let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
     const filtered = cart.filter((obj) => obj.id !== id);
@@ -72,9 +111,11 @@ const AppContextProvider = (props) => {
   }
 
   useEffect(() => {
+    setAllCategories(getAllUniqueCategories(ProductList.Products));
     setCartProducts(JSON.parse(localStorage.getItem("cartProducts")));
   }, []);
   const toggleProductZoom = () => setIsOpenZoomProduct(!isOpenZoomProduct);
+
   return (
     <AppContext.Provider
       value={{
@@ -112,6 +153,8 @@ const AppContextProvider = (props) => {
         toggleProductZoom,
         activeCollection,
         setActiveCollection,
+        allCategories,
+        filterByCategory,
       }}
     >
       {props.children}

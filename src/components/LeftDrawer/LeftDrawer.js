@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../../contexts/AppContext";
 function LeftDrawer() {
   const {
+    allCategories,
     clickShopDrawer,
     setClickShopDrawer,
     isOpenLeftDrawer,
@@ -15,7 +16,6 @@ function LeftDrawer() {
     setPageSwitch,
     setProductCollection,
   } = useContext(AppContext);
-  console.log("isOpenLeftDrawer", isOpenLeftDrawer);
   const makeLink = (name) => {
     return name?.split(" ").join("-").toLowerCase();
   };
@@ -91,7 +91,7 @@ function LeftDrawer() {
                     />
                   </span>
                 </li>
-                {["Skin", "Hair", "Bath & Body", "All Products"].map((item) => {
+                {allCategories.map((item) => {
                   return (
                     <Link
                       key={item + "p"}

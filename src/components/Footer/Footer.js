@@ -45,7 +45,7 @@ function Footer() {
           </Row>
           <Row>
             <Col className="footer_credits">
-              <p>Copyright @ 2023, Shoppe</p>
+              <p>Copyright @{new Date().getFullYear()}, Shoppe</p>
               <p>Powered by Aquib Yazdani</p>
             </Col>
           </Row>

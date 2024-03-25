@@ -18,18 +18,6 @@ function Collection() {
   } = useContext(AppContext);
   const [imageIndex, setImageIndex] = useState();
 
-  // useEffect(() => {
-  //   if (productCollection === "All Products") {
-  //     setFilteredProducts(ProductList.Products);
-  //   } else {
-  //     setFilteredProducts(
-  //       ProductList.Products.filter(
-  //         (item) => item.category === productCollection
-  //       )
-  //     );
-  //   }
-  // }, [productCollection, setFilteredProducts]);
-
   useEffect(() => {
     if (window.location.href.includes("collection")) {
       if (
@@ -39,7 +27,6 @@ function Collection() {
           .join(" ")
           .toLowerCase() == "all products"
       ) {
-        console.log("true");
         setActiveCollection(ProductList.Products);
       } else if (
         window.location.pathname.split("/")[2]?.includes("best-selling")
@@ -59,7 +46,7 @@ function Collection() {
         setActiveCollection(allProducts);
       }
     }
-  }, [window.location.href]);
+  }, [productCollection]);
 
   return (
     <>

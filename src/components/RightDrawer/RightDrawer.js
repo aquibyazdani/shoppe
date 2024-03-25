@@ -1,20 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Row, Col, FormGroup, Input, Label } from "reactstrap";
 import "../LeftDrawer/leftdrawer.css";
+import ProductList from "../../config/productlist.json";
 
 //AppContext
 import { AppContext } from "../../contexts/AppContext";
 import { Minus, Plus, Trash } from "react-feather";
+import { sortProducts } from "../../utils/utils";
 function RightDrawer() {
   const {
     isOpenRightDrawer,
+    allCategories,
     setIsOpenRightDrawer,
     rightDrawerMenu,
     setQuantity,
     quantity,
     handleDeleteCart,
     cartProducts,
+    activeCollection,
+    setActiveCollection,
+    filterByCategory,
   } = useContext(AppContext);
+  console.log("activeCollection: ", activeCollection);
+
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  console.log("selectedFilters: ", selectedFilters);
+
+  // Function to handle checkbox change
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      // If checkbox is checked, add it to the selectedFilters array
+      setSelectedFilters([...selectedFilters, value]);
+    } else {
+      // If checkbox is unchecked, remove it from the selectedFilters array
+      setSelectedFilters(selectedFilters.filter((filter) => filter !== value));
+    }
+  };
+
+  function applyAll(type) {
+    if (type === "Sort") {
+      setActiveCollection(sortedProducts);
+    } else if ("Filter") {
+      filterByCategory(ProductList.Products, selectedFilters);
+    }
+    setIsOpenRightDrawer(false);
+  }
+
+  const sortArrays = [
+    { name: "Alphabetically, A-Z", criteria: "alphabetic", order: "asc" },
+    { name: "Alphabetically, Z-A", criteria: "alphabetic", order: "desc" },
+    { name: "Price, low to high", criteria: "price", order: "asc" },
+    { name: "Price, high to low", criteria: "price", order: "desc" },
+  ];
 
   return (
     <>
@@ -53,15 +92,9 @@ function RightDrawer() {
                   <p className="mb-4">{rightDrawerMenu}</p>
 
                   <FormGroup tag="fieldset">
-                    {[
-                      "Featured",
-                      "Alphabetically, A-Z",
-                      "Alphabetically, Z-A",
-                      "Price, low to high",
-                      "Price, high to low",
-                    ].map((sort, index) => {
+                    {sortArrays.map((sort, index) => {
                       return (
-                        <div>
+                        <div key={sort?.name}>
                           <FormGroup tag="fieldset">
                             <FormGroup check>
                               <Input
@@ -69,9 +102,18 @@ function RightDrawer() {
                                 name="radio1"
                                 type="radio"
                                 className="radio_sort_drawer"
+                                onChange={() => {
+                                  let sortedP = [];
+                                  sortedP = sortProducts(
+                                    activeCollection,
+                                    sort.criteria,
+                                    sort.order
+                                  );
+                                  setSortedProducts(sortedP);
+                                }}
                               />
                               <Label className="label_sort_drawer" check>
-                                {sort}
+                                {sort?.name}
                               </Label>
                             </FormGroup>
                           </FormGroup>
@@ -94,11 +136,17 @@ function RightDrawer() {
                   <p className="mb-4">{rightDrawerMenu}</p>
 
                   <FormGroup tag="fieldset">
-                    {["Skin", "Hair", "Bath & Body"].map((filter, index) => {
+                    {allCategories.map((filter, index) => {
                       return (
-                        <div>
+                        <div key={filter}>
                           <FormGroup check>
-                            <Input type="checkbox" />
+                            <Input
+                              type="checkbox"
+                              value={filter}
+                              onChange={(e) => {
+                                handleCheckboxChange(e);
+                              }}
+                            />
                             <Label className="label_sort_drawer" check>
                               {filter}
                             </Label>
@@ -172,7 +220,14 @@ function RightDrawer() {
           </Row>
           {rightDrawerMenu !== "Search" && rightDrawerMenu !== "Cart" && (
             <Row className="drawer_footer">
-              <div className="drawer_footer_btn">Apply</div>
+              <div
+                className="drawer_footer_btn"
+                onClick={() => {
+                  applyAll(rightDrawerMenu);
+                }}
+              >
+                Apply
+              </div>
             </Row>
           )}
         </Col>
