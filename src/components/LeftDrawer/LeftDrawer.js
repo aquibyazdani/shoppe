@@ -60,7 +60,7 @@ function LeftDrawer() {
                   className="left_drawer_menu_search"
                   onClick={() => {
                     setIsOpenLeftDrawer(false);
-                    setRightDrawerMenu("search");
+                    setRightDrawerMenu("Search");
                     setIsOpenRightDrawer(true);
                   }}
                 >

@@ -52,7 +52,7 @@ function RightDrawer() {
     { name: "Price, low to high", criteria: "price", order: "asc" },
     { name: "Price, high to low", criteria: "price", order: "desc" },
   ];
-
+  console.log("rightDrawerMenu", rightDrawerMenu);
   return (
     <>
       <Row
@@ -120,9 +120,6 @@ function RightDrawer() {
                     })}
                   </FormGroup>
                 </div>
-                <Row className="drawer_footer">
-                  <div className="drawer_footer_btn">Apply</div>
-                </Row>
               </div>
             )}
 

@@ -47,9 +47,12 @@ function Collection() {
     }
   }, [productCollection, setActiveCollection]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
-      <Row className="coltn_wrapper justify-content-center">
+      <Row className="coltn_wrapper justify-content-center px-2">
         <Col md={5} className="coltn_wrapper_col text-center">
           <b>
             {window.location.pathname
@@ -115,6 +118,9 @@ function Collection() {
                           width="100%"
                           onMouseEnter={(e) => {
                             setImageIndex(i);
+                          }}
+                          onMouseLeave={() => {
+                            setImageIndex();
                           }}
                           src={
                             i === imageIndex

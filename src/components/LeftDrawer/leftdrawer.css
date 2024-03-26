@@ -157,6 +157,7 @@
   background-color: #131313;
   padding: 16px 20px;
   color: white;
+  max-width: 100%;
 }
 
 input:focus {
@@ -217,6 +218,7 @@ input:focus {
   color: black;
   font-weight: 600;
   cursor: pointer;
+  max-width: 80vw;
 }
 .drawer_footer_btn :hover {
   background-color: #cccccc;
