@@ -21,11 +21,9 @@ function RightDrawer() {
     setActiveCollection,
     filterByCategory,
   } = useContext(AppContext);
-  console.log("activeCollection: ", activeCollection);
 
   const [sortedProducts, setSortedProducts] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  console.log("selectedFilters: ", selectedFilters);
 
   // Function to handle checkbox change
   const handleCheckboxChange = (e) => {
@@ -200,7 +198,6 @@ function RightDrawer() {
                             <Col>
                               <Trash
                                 onClick={() => {
-                                  console.log("delte");
                                   handleDeleteCart(item?.id);
                                 }}
                               />

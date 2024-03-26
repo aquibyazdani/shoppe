@@ -89,7 +89,6 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
                     <button
                       className="carousel_action_btn"
                       onClick={() => {
-                        console.log("llll");
                         handleAddToCart(
                           item?.name,
                           item?.offerPrice,
