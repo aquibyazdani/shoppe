@@ -9,7 +9,7 @@ const AppContextProvider = (props) => {
   const [clickShopDrawer, setClickShopDrawer] = useState(false);
   const [isOpenRightDrawer, setIsOpenRightDrawer] = useState(false);
   const [rightDrawerMenu, setRightDrawerMenu] = useState("Search");
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [pageSwitch, setPageSwitch] = useState("home");
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -18,11 +18,12 @@ const AppContextProvider = (props) => {
   const [isOpenZoomProduct, setIsOpenZoomProduct] = useState(false);
   const [activeCollection, setActiveCollection] = useState();
   const [allCategories, setAllCategories] = useState([]);
-  console.log("allCategories: ", allCategories);
-  const productPageHandler = (id) => {
-    setSelectedProductId(id);
+
+  const productPageHandler = (name) => {
     setPageSwitch("product page");
-    setSelectedProduct(ProductList.Products.filter((item) => item.id === id));
+    setSelectedProduct(
+      ProductList.Products.filter((item) => item.name === name)
+    );
   };
   const sideScroll = (element, direction, speed, distance, step) => {
     let scrollAmount = 0;

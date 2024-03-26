@@ -18,3 +18,19 @@ export function sortProducts(products, criteria, order) {
     return order === "asc" ? comparison : -comparison;
   });
 }
+
+export function linkToProduct(product) {
+  console.log("product: ", product);
+  const link_product = product?.name
+    ?.split(" ")
+    .join("-")
+    .toLowerCase()
+    .replace("%", "");
+  console.log("link_product: ", link_product);
+  return `/products/${link_product}`;
+}
+
+export function linkToCollection(name) {
+  const link_collection = name?.split(" ").join("-").toLowerCase();
+  return `/collection/${link_collection}`;
+}

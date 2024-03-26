@@ -4,6 +4,7 @@ import "./leftdrawer.css";
 import { Link } from "react-router-dom";
 //AppContext
 import { AppContext } from "../../contexts/AppContext";
+import { linkToCollection } from "../../utils/utils";
 function LeftDrawer() {
   const {
     allCategories,
@@ -16,9 +17,7 @@ function LeftDrawer() {
     setPageSwitch,
     setProductCollection,
   } = useContext(AppContext);
-  const makeLink = (name) => {
-    return name?.split(" ").join("-").toLowerCase();
-  };
+
   return (
     <>
       <Row
@@ -95,7 +94,7 @@ function LeftDrawer() {
                   return (
                     <Link
                       key={item + "p"}
-                      to={`/collection/${makeLink(item)}`}
+                      to={linkToCollection(item)}
                       className="no-decoration"
                       onClick={() => {
                         setProductCollection(item);

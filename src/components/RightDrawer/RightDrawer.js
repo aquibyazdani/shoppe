@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Row, Col, FormGroup, Input, Label } from "reactstrap";
 import "../LeftDrawer/leftdrawer.css";
 import ProductList from "../../config/productlist.json";

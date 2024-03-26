@@ -45,10 +45,10 @@ function HomePage() {
             <Row className="our_values_header">
               <p className="text-center">Our values</p>
             </Row>
-            <Row>
+            <Row className="justify-content-center">
               {OurValues.Values.map((item, i) => {
                 return (
-                  <Col md={4} key={item?.id + item.name}>
+                  <Col md={4} key={item?.id + item.name} style={{}}>
                     <Card className="px-3 border-0">
                       <img
                         width="48px"

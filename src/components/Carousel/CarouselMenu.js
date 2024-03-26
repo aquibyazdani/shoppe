@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 import { AppContext } from "../../contexts/AppContext";
 function CarouselMenu({ section, action, productlist, concern, id }) {
   //Context
-  const { sideScroll, productPageHandler } = useContext(AppContext);
+  const { sideScroll } = useContext(AppContext);
   const [activeDot, setActiveDot] = useState("left");
   const [scrollDistance, setScrollDistance] = useState(800);
 
@@ -42,9 +42,6 @@ function CarouselMenu({ section, action, productlist, concern, id }) {
     }
   }, []);
 
-  // useEffect(() => {
-  //   document.getElementById(id).addEventListener("scroll", function (e) {});
-  // }, []);
   return (
     <>
       <Row className={!concern ? "carousel_parent" : "concern_carousel_parent"}>

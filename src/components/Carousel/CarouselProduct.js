@@ -4,10 +4,11 @@ import "./carousel.css";
 import { ChevronLeft, ChevronRight } from "react-feather";
 //Context
 import { AppContext } from "../../contexts/AppContext";
+import { linkToProduct } from "../../utils/utils";
+import { Link } from "react-router-dom";
 function CarouselProduct({ section, action, productlist, concern, id }) {
   //Context
-  const { sideScroll, productPageHandler, handleAddToCart, cartProducts } =
-    useContext(AppContext);
+  const { sideScroll, handleAddToCart } = useContext(AppContext);
   const [activeDot, setActiveDot] = useState("left");
   const [scrollDistance, setScrollDistance] = useState(800);
 
@@ -43,11 +44,6 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
     }
   }, []);
 
-  // function handleCheckCartTrue(id) {
-  //   const filtered = cartProducts.filter((obj) => obj.id === "03");
-  //   console.log(console.log("@@cartProducts: ", filtered));
-  // }
-
   return (
     <>
       <Row className={!concern ? "carousel_parent" : "concern_carousel_parent"}>
@@ -65,7 +61,6 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
           {section && <p className="primary_title_carousel">{section ?? ""}</p>}
           <Row id={id} className="product_carousel_container">
             {productlist.map((item, index) => {
-              console.log("item: ", item);
               return (
                 <Col
                   className="carousel_card_container"
@@ -73,12 +68,10 @@ function CarouselProduct({ section, action, productlist, concern, id }) {
                   sm={6}
                   md={!concern ? 3 : 4}
                 >
-                  <img
-                    onClick={() => productPageHandler(item.id)}
-                    width="100%"
-                    src={item?.images[0]}
-                    alt="salylic"
-                  />
+                  <Link to={`${linkToProduct(item)}`}>
+                    <img width="100%" src={item?.images[0]} alt="salylic" />
+                  </Link>
+
                   {item?.name && (
                     <Col className="carousel_productinfo">
                       <p className="carousel_product_name">{item?.name}</p>

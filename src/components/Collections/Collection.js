@@ -6,13 +6,12 @@ import ProductList from "../../config/productlist.json";
 //CONTEXT
 import { AppContext } from "../../contexts/AppContext";
 import { ChevronDown } from "react-feather";
+import { Link } from "react-router-dom";
+import { linkToProduct } from "../../utils/utils";
 function Collection() {
   const {
     productCollection,
     handleRightDrawer,
-    filteredProducts,
-    setFilteredProducts,
-    productPageHandler,
     setActiveCollection,
     activeCollection,
   } = useContext(AppContext);
@@ -25,7 +24,7 @@ function Collection() {
           .split("/")[2]
           ?.split("-")
           .join(" ")
-          .toLowerCase() == "all products"
+          .toLowerCase() === "all products"
       ) {
         setActiveCollection(ProductList.Products);
       } else if (
@@ -39,14 +38,14 @@ function Collection() {
       } else {
         const allProducts = ProductList.Products.filter(
           (products) =>
-            products?.category.toLowerCase() ==
+            products?.category.toLowerCase() ===
             window.location.pathname.split("/")[2]?.split("-").join(" ")
         );
 
         setActiveCollection(allProducts);
       }
     }
-  }, [productCollection]);
+  }, [productCollection, setActiveCollection]);
 
   return (
     <>
@@ -105,46 +104,43 @@ function Collection() {
           <Row className="product_list_wrapper">
             {activeCollection?.map((product, i) => {
               return (
-                <Col
-                  md="4"
-                  xs={6}
-                  className="mb-4"
-                  key={product.name + i}
-                  onClick={() => {
-                    productPageHandler(product.id);
-                    // setSelectedProductId(product?.id);
-                    // setPageSwitch("product page");
-                  }}
-                >
-                  <span>
-                    <img
-                      width="100%"
-                      onMouseEnter={(e) => {
-                        setImageIndex(i);
-                      }}
-                      src={
-                        i === imageIndex
-                          ? `/${product.images[1]}`
-                          : `/${product.images[0]}`
-                      }
-                      alt={product.name}
-                    />
-                  </span>
+                <Col md="4" xs={6} className="mb-4" key={product.name + i}>
+                  <Link
+                    className="link_product"
+                    to={`${linkToProduct(product)}`}
+                  >
+                    <>
+                      <span>
+                        <img
+                          width="100%"
+                          onMouseEnter={(e) => {
+                            setImageIndex(i);
+                          }}
+                          src={
+                            i === imageIndex
+                              ? `/${product.images[1]}`
+                              : `/${product.images[0]}`
+                          }
+                          alt={product.name}
+                        />
+                      </span>
 
-                  <Col className="carousel_productinfo text-center">
-                    <p className="carousel_product_name">{product?.name}</p>
-                    <p className="carousel_card_mrp mb-0">
-                      {product?.reviewers[0].count}
-                    </p>
-                    <Row>
-                      <p className="carousel_card_mrp mt-0">
-                        {product?.mrp}
-                        <span className="carousel_card_price mt-0">
-                          {product?.offerPrice}
-                        </span>
-                      </p>
-                    </Row>
-                  </Col>
+                      <Col className="carousel_productinfo text-center">
+                        <p className="carousel_product_name">{product?.name}</p>
+                        <p className="carousel_card_mrp mb-0">
+                          {product?.reviewers[0].count}
+                        </p>
+                        <Row>
+                          <p className="carousel_card_mrp mt-0">
+                            {product?.mrp}
+                            <span className="carousel_card_price mt-0">
+                              {product?.offerPrice}
+                            </span>
+                          </p>
+                        </Row>
+                      </Col>
+                    </>
+                  </Link>
                 </Col>
               );
             })}

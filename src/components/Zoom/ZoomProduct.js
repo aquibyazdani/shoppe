@@ -4,10 +4,8 @@ import { AppContext } from "../../contexts/AppContext";
 import { Row, Col } from "reactstrap";
 
 function ZoomProduct(props) {
-  const { toggleProductZoom, isOpenZoomProduct } = useContext(AppContext);
-  console.log("@@isOpenZoomProduct: ", isOpenZoomProduct);
+  const { toggleProductZoom } = useContext(AppContext);
   const [zoomValue, setZoomValue] = useState("100%");
-  console.log("zoomValue: ", zoomValue);
   const zoomImage = () => {
     setZoomValue("150%");
   };
@@ -26,10 +24,11 @@ function ZoomProduct(props) {
           >
             {props?.images?.map((image, i) => {
               return (
-                <Col md="1" className="pructpage_thumbnail">
+                <Col key={image} md="1" className="pructpage_thumbnail">
                   <img
                     className="pructpage_thumbnail_img"
-                    src={image}
+                    src={`/${image}`}
+                    alt="zoomed"
                     onClick={() => setImageIndex(i)}
                   />
                 </Col>
@@ -46,8 +45,8 @@ function ZoomProduct(props) {
               style={{
                 height: zoomValue,
               }}
-              src={props?.images[imageIndex]}
-              alt="current image"
+              src={`/${props?.images[imageIndex]}`}
+              alt="current zoom"
               onClick={() => {
                 zoomImage();
               }}

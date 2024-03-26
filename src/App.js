@@ -22,8 +22,8 @@ function App() {
             path="/collection/:name"
             element={<Collection />}
           ></Route>
+          <Route exact path="/products/:name" element={<ProductPage />}></Route>
           <Route path={`/login`} element={<Login />}></Route>
-          <Route path={`/product:name`} element={<ProductPage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <Footer />

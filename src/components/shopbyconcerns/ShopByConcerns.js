@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Row, Col } from "reactstrap";
 import "./shopbyconcerns.css";
 import cureProducts from "../../config/cureProducts.json";
 
 //Context
-import { AppContext } from "../../contexts/AppContext";
 import CarouselMenu from "../Carousel/CarouselMenu";
 function ShopByConcerns() {
-  // Contexts
-  const {} = useContext(AppContext);
-
   return (
     <>
       <Row className="shop_concern_parent">
@@ -22,7 +18,7 @@ function ShopByConcerns() {
           <div className="shop_concern_second_box">
             <img
               src="/images/concernsbannerhorizontalmin-1646166678730.webp"
-              alt="concern image"
+              alt="concern"
               width="100%"
             />
           </div>
